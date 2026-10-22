@@ -4,3 +4,7 @@ results/*/perf.data
 results/*/out.perf
 windows/energy_results.txt
 *.o
+windows/*.csv
+windows/stop.flag
+windows/power_error.txt
+windows/run_phases.bat

@@ -87,7 +87,18 @@ function Read-Energy {
 
 function Read-CpuBusy {
     # % завантаження CPU (усі ядра), незалежно від мови ОС
-    (Get-CimInstance Win32_PerfFormattedData_PerfOS_Processor -Filter "Name='_Total'").PercentProcessorTime
+    # 1) WMI perf-клас (може бути відсутній, якщо лічильники WMI зламані)
+    try {
+        $v = (Get-CimInstance Win32_PerfFormattedData_PerfOS_Processor -ErrorAction Stop |
+              Where-Object { $_.Name -eq '_Total' }).PercentProcessorTime
+        if ($null -ne $v) { return [double]$v }
+    } catch {}
+    # 2) Win32_Processor.LoadPercentage (є завжди)
+    try {
+        $v = (Get-CimInstance Win32_Processor -ErrorAction Stop | Measure-Object LoadPercentage -Average).Average
+        if ($null -ne $v) { return [double]$v }
+    } catch {}
+    return [double]::NaN
 }
 
 function Pick-Pkg($h) {
