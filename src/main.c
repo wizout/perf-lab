@@ -1,35 +1,23 @@
-/*
- * perf-lab: навчальна програма для профілювання.
- *
- * Три обчислювальні етапи з різним характером навантаження:
- *   1) matmul      — множення матриць float (N x N), порядок i-k-j:
- *                    внутрішній цикл послідовно йде по пам'яті й добре векторизується;
- *   2) saxpy_loop  — y = a*x + y над великим масивом (обмежене пропускною здатністю пам'яті);
- *   3) histogram   — гістограма байтів (розгалуження/залежності, погано векторизується).
- * Плюс init_data — генерація даних (LCG), щоб етап ініціалізації теж був видно на графіку.
- *
- * Функції позначені noinline, щоб кожен етап лишався окремим кадром на FlameGraph
- * навіть при -O3 (інакше компілятор вбудує їх у main).
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
 #include <time.h>
 
+// noinline щоб на флеймграфі кожна функція була окремо навіть з -O3
 #define NOINLINE __attribute__((noinline))
 
 #ifndef N
-#define N 2048           /* розмір матриць */
+#define N 2048
 #endif
 #ifndef VEC_LEN
-#define VEC_LEN (1u << 22) /* 4M float = 16 MB на масив */
+#define VEC_LEN (1u << 22)
 #endif
 #ifndef SAXPY_REPS
 #define SAXPY_REPS 400
 #endif
 #ifndef HIST_BYTES
-#define HIST_BYTES (1u << 26) /* 64 MB */
+#define HIST_BYTES (1u << 26)
 #endif
 
 static uint32_t rng_state = 12345u;
@@ -53,7 +41,7 @@ NOINLINE void init_data(float *a, float *b, size_t n2, float *x, float *y, size_
         bytes[i] = (uint8_t)(lcg() >> 24);
 }
 
-/* C = A * B, порядок i-k-j: c[i][j] += a[i][k] * b[k][j] */
+// порядок i-k-j, внутрішній цикл йде по пам'яті підряд
 NOINLINE void matmul(const float *restrict a, const float *restrict b, float *restrict c, int n) {
     memset(c, 0, sizeof(float) * (size_t)n * n);
     for (int i = 0; i < n; i++)
@@ -64,7 +52,6 @@ NOINLINE void matmul(const float *restrict a, const float *restrict b, float *re
         }
 }
 
-/* y = alpha * x + y */
 NOINLINE void saxpy(float alpha, const float *restrict x, float *restrict y, size_t len) {
     for (size_t i = 0; i < len; i++)
         y[i] = alpha * x[i] + y[i];
@@ -111,7 +98,7 @@ int main(void) {
     histogram(bytes, HIST_BYTES, hist);
     double t4 = now_sec();
 
-    /* контрольні суми, щоб компілятор не викинув обчислення */
+    // контрольні суми щоб компілятор нічого не викинув
     double cs_c = 0, cs_y = 0;
     for (size_t i = 0; i < n2; i += 97) cs_c += c[i];
     for (size_t i = 0; i < VEC_LEN; i += 997) cs_y += y[i];
@@ -125,6 +112,11 @@ int main(void) {
     printf("total     %8.3f s\n", t4 - t0);
     printf("checksum  c=%.4f y=%.4f h=%llu\n", cs_c, cs_y, (unsigned long long)cs_h);
 
-    free(a); free(b); free(c); free(x); free(y); free(bytes);
+    free(a);
+    free(b);
+    free(c);
+    free(x);
+    free(y);
+    free(bytes);
     return 0;
 }

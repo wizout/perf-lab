@@ -1,6 +1,5 @@
 @echo off
 chcp 65001 >nul
-rem ---- one-click energy measurement: HWiNFO shared memory + timed phases ----
 net session >nul 2>&1
 if %errorlevel% neq 0 (
   powershell -NoProfile -Command "Start-Process -FilePath '%~f0' -Verb RunAs"
@@ -44,5 +43,5 @@ taskkill /im HWiNFO64.exe /f >nul 2>&1
 del /q stop.flag >nul 2>&1
 
 if exist power.csv (echo OK: power.csv written) else (echo !! power.csv NOT found)
-echo Done. Tell Claude "готово".
+echo Done.
 pause
