@@ -1,0 +1,60 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 19K of event 'task-clock:ppp'
+# Event count (approx.): 19170170151
+#
+# Overhead  Symbol                                         IPC   [IPC Coverage]
+# ........  .............................................  ....................
+#
+    87.54%  [.] matmul                                     -      -            
+            |
+            ---main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+    10.79%  [.] saxpy                                      -      -            
+            |
+            ---saxpy_loop
+               main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     0.65%  [.] lcg                                        -      -            
+            |
+            ---init_data
+               main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     0.38%  [.] init_data                                  -      -            
+     0.33%  [.] histogram                                  -      -            
+     0.07%  [k] do_user_addr_fault                         -      -            
+     0.04%  [k] _raw_spin_lock                             -      -            
+     0.02%  [k] do_anonymous_page                          -      -            
+     0.02%  [k] iowrite16                                  -      -            
+     0.02%  [k] memcg1_commit_charge                       -      -            
+     0.01%  [k] handle_softirqs                            -      -            
+     0.01%  [k] irqentry_exit_to_user_mode                 -      -            
+     0.01%  [k] sched_balance_update_blocked_averages      -      -            
+     0.01%  [k] __alloc_frozen_pages_noprof                -      -            
+     0.01%  [k] __dev_queue_xmit                           -      -            
+     0.01%  [k] __handle_mm_fault                          -      -            
+     0.01%  [k] __mod_node_page_state                      -      -            
+     0.01%  [k] __pte_offset_map_lock                      -      -            
+     0.01%  [k] __raw_callee_save___pv_queued_spin_unlock  -      -            
+     0.01%  [k] _raw_spin_trylock                          -      -            
+     0.01%  [k] _raw_spin_unlock_irqrestore                -      -            
+     0.01%  [k] clear_page_erms                            -      -            
+     0.01%  [k] folio_add_new_anon_rmap                    -      -            
+     0.01%  [k] folio_remove_rmap_ptes                     -      -            
+     0.01%  [k] free_unref_folios                          -      -            
+     0.01%  [k] get_mem_cgroup_from_mm                     -      -            
+     0.01%  [k] get_page_from_freelist                     -      -            
+     0.01%  [k] kfree                                      -      -            
+     0.01%  [.] main                                       -      -            
+     0.01%  [k] mas_walk                                   -      -            
+     0.01%  [k] pfn_pte                                    -      -            
+     0.01%  [k] pud_val                                    -      -            

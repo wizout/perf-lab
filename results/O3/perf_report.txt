@@ -1,0 +1,60 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 2K of event 'task-clock:ppp'
+# Event count (approx.): 2009009007
+#
+# Overhead  Symbol                           IPC   [IPC Coverage]
+# ........  ...............................  ....................
+#
+    68.06%  [.] matmul                       -      -            
+            |
+            ---main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+    23.87%  [.] saxpy                        -      -            
+            |
+            ---saxpy_loop
+               main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     4.24%  [.] init_data                    -      -            
+            |          
+             --4.19%--init_data
+                       main
+                       __libc_start_call_main
+                       __libc_start_main_impl (inlined)
+                       _start
+     1.35%  [.] histogram                    -      -            
+            |
+            ---main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     0.70%  [k] do_user_addr_fault           -      -            
+            |
+            ---exc_page_fault
+               asm_exc_page_fault
+               |          
+                --0.60%--init_data
+                          main
+                          __libc_start_call_main
+                          __libc_start_main_impl (inlined)
+                          _start
+     0.30%  [k] memcg1_commit_charge         -      -            
+     0.25%  [k] _raw_spin_lock               -      -            
+     0.20%  [k] _raw_spin_unlock_irqrestore  -      -            
+     0.15%  [k] __pte_offset_map_lock        -      -            
+     0.10%  [k] __handle_mm_fault            -      -            
+     0.10%  [k] __rcu_read_unlock            -      -            
+     0.05%  [k] ___pte_offset_map            -      -            
+     0.05%  [k] __folio_batch_add_and_move   -      -            
+     0.05%  [k] __mod_node_page_state        -      -            
+     0.05%  [k] __rcu_read_lock              -      -            
+     0.05%  [k] _raw_spin_unlock_irq         -      -            
+     0.05%  [k] charge_memcg                 -      -            
+     0.05%  [k] free_frozen_page_commit      -      -            

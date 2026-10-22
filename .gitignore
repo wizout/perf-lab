@@ -1,0 +1,6 @@
+build/
+tools/
+results/*/perf.data
+results/*/out.perf
+windows/energy_results.txt
+*.o

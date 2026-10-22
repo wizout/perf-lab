@@ -1,0 +1,80 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'task-clock:ppp'
+# Event count (approx.): 1882882881
+#
+# Children      Self  Symbol                               IPC   [IPC Coverage]
+# ........  ........  ...................................  ....................
+#
+   100.00%     0.00%  [.] _start                           -      -            
+            |
+            ---__libc_start_main_impl (inlined)
+               __libc_start_call_main
+               main
+               |          
+               |--66.24%--matmul
+               |          
+               |--25.20%--saxpy_loop
+               |          saxpy
+               |          
+               |--6.86%--init_data
+               |          |          
+               |           --2.13%--asm_exc_page_fault
+               |                     exc_page_fault
+               |                     do_user_addr_fault
+               |                     |          
+               |                      --1.70%--handle_mm_fault
+               |                                __handle_mm_fault
+               |                                |          
+               |                                 --1.65%--handle_pte_fault
+               |                                           |          
+               |                                            --1.59%--do_anonymous_page
+               |                                                      |          
+               |                                                       --0.74%--alloc_anon_folio
+               |                                                                 |          
+               |                                                                  --0.53%--__mem_cgroup_charge
+               |          
+                --1.44%--histogram
+   100.00%     0.00%  [.] __libc_start_main_impl (inlined)  -      -            
+            |
+            ---__libc_start_call_main
+               main
+               |          
+               |--66.24%--matmul
+               |          
+               |--25.20%--saxpy_loop
+               |          saxpy
+               |          
+               |--6.86%--init_data
+               |          |          
+               |           --2.13%--asm_exc_page_fault
+               |                     exc_page_fault
+               |                     do_user_addr_fault
+               |                     |          
+               |                      --1.70%--handle_mm_fault
+               |                                __handle_mm_fault
+               |                                |          
+               |                                 --1.65%--handle_pte_fault
+               |                                           |          
+               |                                            --1.59%--do_anonymous_page
+               |                                                      |          
+               |                                                       --0.74%--alloc_anon_folio
+               |                                                                 |          
+               |                                                                  --0.53%--__mem_cgroup_charge
+               |          
+                --1.44%--histogram
+   100.00%     0.00%  [.] __libc_start_call_main           -      -            
+            |
+            ---main
+               |          
+               |--66.24%--matmul
+               |          
+               |--25.20%--saxpy_loop
+               |          saxpy
+               |          
+               |--6.86%--init_data
+               |          |          
+               |           --2.13%--asm_exc_page_fault

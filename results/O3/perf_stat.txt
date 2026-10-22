@@ -1,0 +1,20 @@
+# started on Thu Oct 22 20:24:51 2026
+
+
+ Performance counter stats for './build/prog_O3' (5 runs):
+
+           1862.18 msec task-clock                       #    1.000 CPUs utilized               ( +-  0.60% )
+                 5      context-switches                 #    2.685 /sec                        ( +- 13.27% )
+                 0      cpu-migrations                   #    0.000 /sec                      
+             36934      page-faults                      #   19.834 K/sec                       ( +-  0.00% )
+   <not supported>      cycles                                                                
+   <not supported>      instructions                                                          
+   <not supported>      branches                                                              
+   <not supported>      branch-misses                                                         
+   <not supported>      L1-dcache-loads                                                       
+   <not supported>      L1-dcache-load-misses                                                 
+   <not supported>      LLC-loads                                                             
+   <not supported>      LLC-load-misses                                                       
+
+            1.8629 +- 0.0112 seconds time elapsed  ( +-  0.60% )
+

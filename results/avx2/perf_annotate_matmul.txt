@@ -1,0 +1,359 @@
+ Percent |	Source code & Disassembly of prog_avx2 for task-clock:ppp (1239 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000001830 <matmul>:
+         : 6    for (size_t i = 0; i < nbytes; i++)
+         : 7    bytes[i] = (uint8_t)(lcg() >> 24);
+         : 8    }
+         :
+         : 10   /* C = A * B, порядок i-k-j: c[i][j] += a[i][k] * b[k][j] */
+         : 11   NOINLINE void matmul(const float *restrict a, const float *restrict b, float *restrict c, int n) {
+    0.00 :   1830:   endbr64
+    0.00 :   1834:   push   rbp
+    0.00 :   1835:   mov    r11,rdx
+    0.00 :   1838:   movsxd rdx,ecx
+    0.00 :   183b:   mov    rbp,rsp
+    0.00 :   183e:   push   r15
+    0.00 :   1840:   push   r14
+    0.00 :   1842:   mov    r14,rdi
+    0.00 :   1845:   push   r13
+    0.00 :   1847:   push   r12
+    0.00 :   1849:   mov    r12,rsi
+         : 23   case no work is done at all.  We detect these problems by referring
+         : 24   non-existing functions.  */
+         : 25   __fortify_function void *
+         : 26   __NTH (memset (void *__dest, int __ch, size_t __len))
+         : 27   {
+         : 28   return __builtin___memset_chk (__dest, __ch, __len,
+    0.00 :   184c:   xor    esi,esi
+    0.00 :   184e:   push   rbx
+    0.00 :   184f:   mov    rbx,rdx
+    0.00 :   1852:   and    rsp,0xffffffffffffffe0
+    0.00 :   1856:   sub    rsp,0x60
+         : 34   memset(c, 0, sizeof(float) * (size_t)n * n);
+    0.00 :   185a:   mov    QWORD PTR [rsp+0x40],rdx
+    0.00 :   185f:   imul   rdx,rdx
+         : 37   NOINLINE void matmul(const float *restrict a, const float *restrict b, float *restrict c, int n) {
+    0.00 :   1863:   mov    QWORD PTR [rsp+0x20],rdi
+    0.00 :   1868:   mov    rdi,r11
+         : 40   memset(c, 0, sizeof(float) * (size_t)n * n);
+    0.00 :   186b:   shl    rdx,0x2
+    0.00 :   186f:   call   10e0 <memset@plt>
+         : 43   for (int i = 0; i < n; i++)
+    0.00 :   1874:   test   ebx,ebx
+    0.00 :   1876:   jle    1c40 <matmul+0x410>
+    0.00 :   187c:   lea    edx,[rbx+rbx*1]
+    0.00 :   187f:   lea    esi,[rbx-0x3]
+    0.00 :   1882:   mov    r13d,ebx
+    0.00 :   1885:   xor    r15d,r15d
+    0.00 :   1888:   mov    DWORD PTR [rsp+0x10],edx
+    0.00 :   188c:   movsxd rdx,edx
+    0.00 :   188f:   and    esi,0xfffffffe
+    0.00 :   1892:   xor    ecx,ecx
+    0.00 :   1894:   mov    QWORD PTR [rsp],rdx
+    0.00 :   1898:   lea    edx,[rbx-0x1]
+    0.00 :   189b:   lea    edi,[rsi+0x3]
+    0.00 :   189e:   mov    r11,rax
+    0.00 :   18a1:   mov    DWORD PTR [rsp+0x4c],edx
+    0.00 :   18a5:   mov    edx,ebx
+    0.00 :   18a7:   lea    r8,[rbx*4+0x0]
+    0.00 :   18af:   mov    esi,ecx
+    0.00 :   18b1:   shr    edx,0x3
+    0.00 :   18b4:   mov    QWORD PTR [rsp+0x50],r14
+    0.00 :   18b9:   and    r13d,0xfffffff8
+    0.00 :   18bd:   mov    QWORD PTR [rsp+0x58],0x0
+    0.00 :   18c6:   shl    rdx,0x5
+    0.00 :   18ca:   mov    DWORD PTR [rsp+0x1c],edi
+    0.00 :   18ce:   mov    r14,rdx
+    0.00 :   18d1:   mov    edi,r15d
+    0.00 :   18d4:   xor    edx,edx
+         : 71   for (int k = 0; k < n; k++) {
+         : 72   float aik = a[i * n + k];
+    0.00 :   18d6:   xor    r10d,r10d
+    0.00 :   18d9:   cmp    ebx,0x2
+    0.00 :   18dc:   jle    1ae3 <matmul+0x2b3>
+    0.00 :   18e2:   lea    ecx,[rdx+0x1]
+    0.00 :   18e5:   mov    r15,QWORD PTR [rsp+0x50]
+    0.00 :   18ea:   mov    DWORD PTR [rsp+0x18],esi
+    0.00 :   18ee:   mov    r10d,ebx
+    0.00 :   18f1:   mov    DWORD PTR [rsp+0x48],ecx
+    0.00 :   18f5:   mov    ecx,DWORD PTR [rsp+0x1c]
+    0.00 :   18f9:   mov    DWORD PTR [rsp+0x30],0x0
+    0.00 :   1901:   vmovss xmm3,DWORD PTR [r15]
+    0.00 :   1906:   add    ecx,edx
+    0.00 :   1908:   mov    DWORD PTR [rsp+0x28],edx
+    0.00 :   190c:   mov    DWORD PTR [rsp+0x2c],ecx
+    0.00 :   1910:   xor    ecx,ecx
+    0.00 :   1912:   cmp    DWORD PTR [rsp+0x4c],0x6
+    0.00 :   1917:   mov    DWORD PTR [rsp+0x14],edi
+    0.00 :   191b:   mov    QWORD PTR [rsp+0x38],rax
+    0.00 :   1920:   mov    QWORD PTR [rsp+0x8],r8
+         : 92   for (int j = 0; j < n; j++)
+    0.00 :   1925:   jbe    1abd <matmul+0x28d>
+    0.00 :   192b:   movsxd rdx,r10d
+    0.00 :   192e:   vbroadcastss ymm1,DWORD PTR [r15+0x4]
+    0.00 :   1934:   mov    rax,QWORD PTR [rsp+0x38]
+    0.00 :   1939:   lea    rdi,[r12+rcx*4]
+    0.00 :   193d:   lea    rsi,[r12+rdx*4]
+    0.00 :   1941:   vbroadcastss ymm2,xmm3
+         : 100  float aik = a[i * n + k];
+    0.00 :   1946:   xor    edx,edx
+    0.00 :   1948:   nop    DWORD PTR [rax+rax*1+0x0]
+         : 103  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1950:   vmovups ymm0,YMMWORD PTR [rdi+rdx*1]
+   15.82 :   1955:   vfmadd213ps ymm0,ymm2,YMMWORD PTR [rax+rdx*1]
+    6.30 :   195b:   vfmadd231ps ymm0,ymm1,YMMWORD PTR [rsi+rdx*1]
+   74.50 :   1961:   vmovups YMMWORD PTR [rax+rdx*1],ymm0
+         : 108  for (int j = 0; j < n; j++)
+    2.82 :   1966:   add    rdx,0x20
+    0.00 :   196a:   cmp    rdx,r14
+    0.00 :   196d:   jne    1950 <matmul+0x120>
+    0.00 :   196f:   mov    QWORD PTR [rsp+0x38],rax
+    0.00 :   1974:   cmp    r13d,ebx
+    0.00 :   1977:   je     1a86 <matmul+0x256>
+         : 115  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   197d:   mov    edx,r13d
+         : 117  for (int j = 0; j < n; j++)
+    0.00 :   1980:   mov    esi,r13d
+    0.00 :   1983:   mov    r8d,ebx
+    0.00 :   1986:   sub    r8d,edx
+    0.00 :   1989:   lea    edi,[r8-0x1]
+    0.00 :   198d:   cmp    edi,0x2
+    0.00 :   1990:   jbe    19e4 <matmul+0x1b4>
+    0.00 :   1992:   mov    rdi,QWORD PTR [rsp+0x58]
+         : 125  float aik = a[i * n + k];
+    0.00 :   1997:   mov    rax,QWORD PTR [rsp+0x20]
+         : 127  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   199c:   vshufps xmm1,xmm3,xmm3,0x0
+    0.00 :   19a1:   add    rdi,rdx
+    0.00 :   19a4:   lea    r9,[r11+rdi*4]
+    0.00 :   19a8:   movsxd rdi,r10d
+    0.00 :   19ab:   add    rdi,rdx
+    0.00 :   19ae:   add    rdx,rcx
+    0.00 :   19b1:   vmovups xmm6,XMMWORD PTR [r9]
+    0.00 :   19b6:   vfmadd132ps xmm1,xmm6,XMMWORD PTR [r12+rdx*4]
+         : 136  float aik = a[i * n + k];
+    0.00 :   19bc:   movsxd rdx,DWORD PTR [rsp+0x48]
+    0.00 :   19c1:   vbroadcastss xmm0,DWORD PTR [rax+rdx*4]
+         : 139  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   19c7:   vfmadd132ps xmm0,xmm1,XMMWORD PTR [r12+rdi*4]
+    0.00 :   19cd:   mov    edx,r8d
+    0.00 :   19d0:   and    edx,0xfffffffc
+    0.00 :   19d3:   add    esi,edx
+    0.00 :   19d5:   and    r8d,0x3
+    0.00 :   19d9:   vmovups XMMWORD PTR [r9],xmm0
+         : 146  for (int j = 0; j < n; j++)
+    0.00 :   19de:   je     1a86 <matmul+0x256>
+         : 148  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   19e4:   mov    eax,DWORD PTR [rsp+0x28]
+    0.00 :   19e8:   mov    r9d,DWORD PTR [rsp+0x30]
+    0.00 :   19ed:   vmovss xmm0,DWORD PTR [r15+0x4]
+    0.00 :   19f3:   lea    edx,[rax+rsi*1]
+    0.00 :   19f6:   movsxd rdx,edx
+    0.00 :   19f9:   lea    rdi,[r11+rdx*4]
+    0.00 :   19fd:   lea    edx,[r9+rsi*1]
+    0.00 :   1a01:   movsxd rdx,edx
+    0.00 :   1a04:   vmovss xmm1,DWORD PTR [r12+rdx*4]
+    0.00 :   1a0a:   lea    edx,[r10+rsi*1]
+    0.00 :   1a0e:   vfmadd213ss xmm1,xmm3,DWORD PTR [rdi]
+    0.00 :   1a13:   movsxd rdx,edx
+    0.00 :   1a16:   vfmadd231ss xmm1,xmm0,DWORD PTR [r12+rdx*4]
+         : 162  for (int j = 0; j < n; j++)
+    0.00 :   1a1c:   lea    edx,[rsi+0x1]
+         : 164  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1a1f:   vmovss DWORD PTR [rdi],xmm1
+         : 166  for (int j = 0; j < n; j++)
+    0.00 :   1a23:   cmp    ebx,edx
+    0.00 :   1a25:   jle    1a86 <matmul+0x256>
+         : 169  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1a27:   lea    edi,[rax+rdx*1]
+         : 171  for (int j = 0; j < n; j++)
+    0.00 :   1a2a:   add    esi,0x2
+         : 173  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1a2d:   movsxd rdi,edi
+    0.00 :   1a30:   lea    r8,[r11+rdi*4]
+    0.00 :   1a34:   lea    edi,[r9+rdx*1]
+    0.00 :   1a38:   add    edx,r10d
+    0.00 :   1a3b:   movsxd rdi,edi
+    0.00 :   1a3e:   movsxd rdx,edx
+    0.00 :   1a41:   vmovss xmm1,DWORD PTR [r12+rdi*4]
+    0.00 :   1a47:   vfmadd213ss xmm1,xmm3,DWORD PTR [r8]
+    0.00 :   1a4c:   vfmadd231ss xmm1,xmm0,DWORD PTR [r12+rdx*4]
+    0.00 :   1a52:   vmovss DWORD PTR [r8],xmm1
+         : 184  for (int j = 0; j < n; j++)
+    0.00 :   1a57:   cmp    ebx,esi
+    0.00 :   1a59:   jle    1a86 <matmul+0x256>
+         : 187  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1a5b:   lea    edx,[rax+rsi*1]
+    0.00 :   1a5e:   movsxd rdx,edx
+    0.00 :   1a61:   lea    rdi,[r11+rdx*4]
+    0.00 :   1a65:   lea    edx,[r9+rsi*1]
+    0.00 :   1a69:   add    esi,r10d
+    0.00 :   1a6c:   movsxd rdx,edx
+    0.00 :   1a6f:   vmovss xmm7,DWORD PTR [rdi]
+    0.00 :   1a73:   vfmadd132ss xmm3,xmm7,DWORD PTR [r12+rdx*4]
+    0.00 :   1a79:   movsxd rdx,esi
+    0.00 :   1a7c:   vfmadd132ss xmm0,xmm3,DWORD PTR [r12+rdx*4]
+    0.00 :   1a82:   vmovss DWORD PTR [rdi],xmm0
+         : 199  for (int k = 0; k < n; k++) {
+    0.16 :   1a86:   mov    eax,DWORD PTR [rsp+0x10]
+    0.00 :   1a8a:   add    DWORD PTR [rsp+0x30],eax
+    0.00 :   1a8e:   add    r15,0x8
+    0.00 :   1a92:   add    r10d,eax
+    0.00 :   1a95:   mov    rax,QWORD PTR [rsp]
+    0.00 :   1a99:   add    rcx,rax
+    0.00 :   1a9c:   mov    eax,DWORD PTR [rsp+0x48]
+    0.08 :   1aa0:   lea    edx,[rax+0x2]
+    0.00 :   1aa3:   cmp    DWORD PTR [rsp+0x2c],edx
+    0.00 :   1aa7:   je     1ac6 <matmul+0x296>
+    0.00 :   1aa9:   cmp    DWORD PTR [rsp+0x4c],0x6
+         : 211  float aik = a[i * n + k];
+    0.00 :   1aae:   vmovss xmm3,DWORD PTR [r15]
+    0.24 :   1ab3:   mov    DWORD PTR [rsp+0x48],edx
+         : 214  for (int j = 0; j < n; j++)
+    0.00 :   1ab7:   ja     192b <matmul+0xfb>
+         : 216  float aik = a[i * n + k];
+    0.00 :   1abd:   xor    edx,edx
+         : 218  for (int j = 0; j < n; j++)
+    0.00 :   1abf:   xor    esi,esi
+    0.00 :   1ac1:   jmp    1983 <matmul+0x153>
+         : 221  for (int k = 0; k < n; k++) {
+    0.00 :   1ac6:   mov    edi,DWORD PTR [rsp+0x14]
+    0.00 :   1aca:   mov    ecx,eax
+    0.00 :   1acc:   mov    esi,DWORD PTR [rsp+0x18]
+    0.00 :   1ad0:   mov    edx,DWORD PTR [rsp+0x28]
+    0.00 :   1ad4:   mov    rax,QWORD PTR [rsp+0x38]
+    0.00 :   1ad9:   mov    r8,QWORD PTR [rsp+0x8]
+    0.00 :   1ade:   lea    r10d,[rdi+rcx*1+0x1]
+    0.00 :   1ae3:   movsxd r15,r10d
+    0.00 :   1ae6:   imul   r10d,ebx
+    0.00 :   1aea:   mov    DWORD PTR [rsp+0x48],esi
+    0.00 :   1aee:   mov    DWORD PTR [rsp+0x38],edi
+    0.00 :   1af2:   mov    QWORD PTR [rsp+0x30],r8
+    0.00 :   1af7:   movsxd r9,r10d
+    0.00 :   1afa:   nop    WORD PTR [rax+rax*1+0x0]
+         : 236  float aik = a[i * n + k];
+    0.00 :   1b00:   mov    rdi,QWORD PTR [rsp+0x50]
+    0.00 :   1b05:   cmp    DWORD PTR [rsp+0x4c],0x6
+    0.00 :   1b0a:   vmovss xmm1,DWORD PTR [rdi+r15*4]
+         : 240  for (int j = 0; j < n; j++)
+    0.00 :   1b10:   jbe    1c50 <matmul+0x420>
+    0.00 :   1b16:   lea    rsi,[r12+r9*4]
+    0.00 :   1b1a:   vbroadcastss ymm2,xmm1
+         : 244  float aik = a[i * n + k];
+    0.00 :   1b1f:   xor    ecx,ecx
+    0.00 :   1b21:   nop    DWORD PTR [rax+0x0]
+         : 247  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1b28:   vmovups ymm0,YMMWORD PTR [rsi+rcx*1]
+    0.08 :   1b2d:   vfmadd213ps ymm0,ymm2,YMMWORD PTR [rax+rcx*1]
+    0.00 :   1b33:   vmovups YMMWORD PTR [rax+rcx*1],ymm0
+         : 251  for (int j = 0; j < n; j++)
+    0.00 :   1b38:   add    rcx,0x20
+    0.00 :   1b3c:   cmp    r14,rcx
+    0.00 :   1b3f:   jne    1b28 <matmul+0x2f8>
+    0.00 :   1b41:   cmp    r13d,ebx
+    0.00 :   1b44:   je     1bf9 <matmul+0x3c9>
+         : 257  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1b4a:   mov    ecx,r13d
+         : 259  for (int j = 0; j < n; j++)
+    0.00 :   1b4d:   mov    esi,r13d
+    0.00 :   1b50:   mov    edi,ebx
+    0.00 :   1b52:   sub    edi,ecx
+    0.00 :   1b54:   lea    r8d,[rdi-0x1]
+    0.00 :   1b58:   cmp    r8d,0x2
+    0.00 :   1b5c:   jbe    1b8e <matmul+0x35e>
+    0.00 :   1b5e:   mov    r8,QWORD PTR [rsp+0x58]
+         : 267  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1b63:   vshufps xmm0,xmm1,xmm1,0x0
+    0.00 :   1b68:   add    r8,rcx
+    0.00 :   1b6b:   add    rcx,r9
+    0.00 :   1b6e:   lea    r8,[r11+r8*4]
+    0.00 :   1b72:   vmovups xmm4,XMMWORD PTR [r8]
+    0.00 :   1b77:   vfmadd132ps xmm0,xmm4,XMMWORD PTR [r12+rcx*4]
+    0.00 :   1b7d:   mov    ecx,edi
+    0.00 :   1b7f:   and    ecx,0xfffffffc
+    0.00 :   1b82:   add    esi,ecx
+    0.00 :   1b84:   and    edi,0x3
+    0.00 :   1b87:   vmovups XMMWORD PTR [r8],xmm0
+         : 279  for (int j = 0; j < n; j++)
+    0.00 :   1b8c:   je     1bf9 <matmul+0x3c9>
+         : 281  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1b8e:   lea    ecx,[rdx+rsi*1]
+    0.00 :   1b91:   movsxd rcx,ecx
+    0.00 :   1b94:   lea    rdi,[r11+rcx*4]
+    0.00 :   1b98:   lea    ecx,[r10+rsi*1]
+    0.00 :   1b9c:   movsxd rcx,ecx
+    0.00 :   1b9f:   vmovss xmm0,DWORD PTR [r12+rcx*4]
+    0.00 :   1ba5:   vfmadd213ss xmm0,xmm1,DWORD PTR [rdi]
+         : 289  for (int j = 0; j < n; j++)
+    0.00 :   1baa:   lea    ecx,[rsi+0x1]
+         : 291  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1bad:   vmovss DWORD PTR [rdi],xmm0
+         : 293  for (int j = 0; j < n; j++)
+    0.00 :   1bb1:   cmp    ebx,ecx
+    0.00 :   1bb3:   jle    1bf9 <matmul+0x3c9>
+         : 296  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1bb5:   lea    edi,[rdx+rcx*1]
+    0.00 :   1bb8:   add    ecx,r10d
+         : 299  for (int j = 0; j < n; j++)
+    0.00 :   1bbb:   add    esi,0x2
+         : 301  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1bbe:   movsxd rdi,edi
+    0.00 :   1bc1:   movsxd rcx,ecx
+    0.00 :   1bc4:   lea    rdi,[r11+rdi*4]
+    0.00 :   1bc8:   vmovss xmm0,DWORD PTR [r12+rcx*4]
+    0.00 :   1bce:   vfmadd213ss xmm0,xmm1,DWORD PTR [rdi]
+    0.00 :   1bd3:   vmovss DWORD PTR [rdi],xmm0
+         : 308  for (int j = 0; j < n; j++)
+    0.00 :   1bd7:   cmp    ebx,esi
+    0.00 :   1bd9:   jle    1bf9 <matmul+0x3c9>
+         : 311  c[i * n + j] += aik * b[k * n + j];
+    0.00 :   1bdb:   lea    ecx,[rdx+rsi*1]
+    0.00 :   1bde:   add    esi,r10d
+    0.00 :   1be1:   movsxd rcx,ecx
+    0.00 :   1be4:   movsxd rsi,esi
+    0.00 :   1be7:   lea    rcx,[r11+rcx*4]
+    0.00 :   1beb:   vmovss xmm5,DWORD PTR [rcx]
+    0.00 :   1bef:   vfmadd132ss xmm1,xmm5,DWORD PTR [r12+rsi*4]
+    0.00 :   1bf5:   vmovss DWORD PTR [rcx],xmm1
+         : 320  for (int k = 0; k < n; k++) {
+    0.00 :   1bf9:   mov    rsi,QWORD PTR [rsp+0x40]
+    0.00 :   1bfe:   add    r15,0x1
+    0.00 :   1c02:   add    r10d,ebx
+    0.00 :   1c05:   add    r9,rsi
+    0.00 :   1c08:   cmp    ebx,r15d
+    0.00 :   1c0b:   jg     1b00 <matmul+0x2d0>
+    0.00 :   1c11:   mov    r15,rsi
+    0.00 :   1c14:   mov    esi,DWORD PTR [rsp+0x48]
+    0.00 :   1c18:   mov    r8,QWORD PTR [rsp+0x30]
+         : 330  for (int i = 0; i < n; i++)
+    0.00 :   1c1d:   add    edx,ebx
+    0.00 :   1c1f:   mov    edi,DWORD PTR [rsp+0x38]
+    0.00 :   1c23:   add    QWORD PTR [rsp+0x50],r8
+    0.00 :   1c28:   add    esi,0x1
+    0.00 :   1c2b:   add    QWORD PTR [rsp+0x58],r15
+    0.00 :   1c30:   add    rax,r8
+    0.00 :   1c33:   sub    edi,ebx
+    0.00 :   1c35:   cmp    ebx,esi
+    0.00 :   1c37:   jne    18d6 <matmul+0xa6>
+    0.00 :   1c3d:   vzeroupper
+         : 341  }
+         : 342  }
+    0.00 :   1c40:   lea    rsp,[rbp-0x28]
+    0.00 :   1c44:   pop    rbx
+    0.00 :   1c45:   pop    r12
+    0.00 :   1c47:   pop    r13
+    0.00 :   1c49:   pop    r14
+    0.00 :   1c4b:   pop    r15
+    0.00 :   1c4d:   pop    rbp
+    0.00 :   1c4e:   ret
+    0.00 :   1c4f:   nop
+         : 352  float aik = a[i * n + k];
+    0.00 :   1c50:   xor    ecx,ecx
+         : 354  for (int j = 0; j < n; j++)
+    0.00 :   1c52:   xor    esi,esi
+    0.00 :   1c54:   jmp    1b50 <matmul+0x320>

@@ -1,0 +1,6 @@
+init         0.122 s
+matmul       1.251 s
+saxpy        0.462 s
+histogram    0.029 s
+total        1.863 s
+checksum  c=22138271.0534 y=585921.9730 h=8623007860

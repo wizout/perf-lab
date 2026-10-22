@@ -1,0 +1,2 @@
+[ perf record: Woken up 61 times to write data ]
+[ perf record: Captured and wrote 15.149 MB results/avx2/perf.data (1881 samples) ]

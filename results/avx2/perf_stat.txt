@@ -1,0 +1,20 @@
+# started on Thu Oct 22 20:25:07 2026
+
+
+ Performance counter stats for './build/prog_avx2' (5 runs):
+
+           1848.08 msec task-clock                       #    1.000 CPUs utilized               ( +-  1.21% )
+                 6      context-switches                 #    3.247 /sec                        ( +-  9.72% )
+                 0      cpu-migrations                   #    0.000 /sec                      
+             36933      page-faults                      #   19.985 K/sec                       ( +-  0.00% )
+   <not supported>      cycles                                                                
+   <not supported>      instructions                                                          
+   <not supported>      branches                                                              
+   <not supported>      branch-misses                                                         
+   <not supported>      L1-dcache-loads                                                       
+   <not supported>      L1-dcache-load-misses                                                 
+   <not supported>      LLC-loads                                                             
+   <not supported>      LLC-load-misses                                                       
+
+            1.8489 +- 0.0223 seconds time elapsed  ( +-  1.21% )
+

@@ -1,0 +1,20 @@
+# started on Thu Oct 22 20:22:54 2026
+
+
+ Performance counter stats for './build/prog_O0' (5 runs):
+
+          18717.60 msec task-clock                       #    1.000 CPUs utilized               ( +-  0.28% )
+                42      context-switches                 #    2.244 /sec                        ( +-  2.65% )
+                 0      cpu-migrations                   #    0.000 /sec                      
+             36933      page-faults                      #    1.973 K/sec                       ( +-  0.00% )
+   <not supported>      cycles                                                                
+   <not supported>      instructions                                                          
+   <not supported>      branches                                                              
+   <not supported>      branch-misses                                                         
+   <not supported>      L1-dcache-loads                                                       
+   <not supported>      L1-dcache-load-misses                                                 
+   <not supported>      LLC-loads                                                             
+   <not supported>      LLC-load-misses                                                       
+
+           18.7193 +- 0.0521 seconds time elapsed  ( +-  0.28% )
+

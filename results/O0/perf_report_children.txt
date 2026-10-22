@@ -1,0 +1,80 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 19K of event 'task-clock:ppp'
+# Event count (approx.): 19170170151
+#
+# Children      Self  Symbol                                         IPC   [IPC Coverage]
+# ........  ........  .............................................  ....................
+#
+   100.00%     0.00%  [.] _start                                     -      -            
+            |
+            ---__libc_start_main_impl (inlined)
+               __libc_start_call_main
+               main
+               |          
+               |--87.62%--matmul
+               |          
+               |--10.81%--saxpy_loop
+               |          saxpy
+               |          
+                --1.21%--init_data
+                          |          
+                           --0.65%--lcg
+   100.00%     0.00%  [.] __libc_start_main_impl (inlined)           -      -            
+            |
+            ---__libc_start_call_main
+               main
+               |          
+               |--87.62%--matmul
+               |          
+               |--10.81%--saxpy_loop
+               |          saxpy
+               |          
+                --1.21%--init_data
+                          |          
+                           --0.65%--lcg
+   100.00%     0.00%  [.] __libc_start_call_main                     -      -            
+            |
+            ---main
+               |          
+               |--87.62%--matmul
+               |          
+               |--10.81%--saxpy_loop
+               |          saxpy
+               |          
+                --1.21%--init_data
+                          |          
+                           --0.65%--lcg
+   100.00%     0.01%  [.] main                                       -      -            
+            |          
+             --99.99%--main
+                       |          
+                       |--87.62%--matmul
+                       |          
+                       |--10.81%--saxpy_loop
+                       |          saxpy
+                       |          
+                        --1.21%--init_data
+                                  |          
+                                   --0.65%--lcg
+    87.62%    87.54%  [.] matmul                                     -      -            
+            |          
+             --87.54%--_start
+                       __libc_start_main_impl (inlined)
+                       __libc_start_call_main
+                       main
+                       matmul
+    10.81%     0.00%  [.] saxpy_loop                                 -      -            
+            |
+            ---saxpy
+    10.81%    10.79%  [.] saxpy                                      -      -            
+            |          
+             --10.79%--_start
+                       __libc_start_main_impl (inlined)
+                       __libc_start_call_main
+                       main
+                       saxpy_loop
+                       saxpy

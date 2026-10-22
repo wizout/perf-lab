@@ -1,0 +1,60 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 1K of event 'task-clock:ppp'
+# Event count (approx.): 1882882881
+#
+# Overhead  Symbol                              IPC   [IPC Coverage]
+# ........  ..................................  ....................
+#
+    65.87%  [.] matmul                          -      -            
+            |
+            ---main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+    25.20%  [.] saxpy                           -      -            
+            |
+            ---saxpy_loop
+               main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     4.73%  [.] init_data                       -      -            
+            |
+            ---main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     1.44%  [.] histogram                       -      -            
+            |
+            ---main
+               __libc_start_call_main
+               __libc_start_main_impl (inlined)
+               _start
+     0.43%  [k] do_user_addr_fault              -      -            
+     0.32%  [k] memcg1_commit_charge            -      -            
+     0.27%  [k] _raw_spin_lock                  -      -            
+     0.27%  [k] _raw_spin_unlock_irqrestore     -      -            
+     0.16%  [k] ___pte_offset_map               -      -            
+     0.16%  [k] __mem_cgroup_charge             -      -            
+     0.16%  [k] __pte_offset_map_lock           -      -            
+     0.16%  [k] clear_page_erms                 -      -            
+     0.16%  [k] do_anonymous_page               -      -            
+     0.11%  [k] uncharge_folio                  -      -            
+     0.05%  [k] __handle_mm_fault               -      -            
+     0.05%  [.] __memset_avx512_unaligned_erms  -      -            
+     0.05%  [k] __pte                           -      -            
+     0.05%  [k] __rcu_read_unlock               -      -            
+     0.05%  [k] __tcp_transmit_skb              -      -            
+     0.05%  [k] _raw_spin_trylock               -      -            
+     0.05%  [k] iowrite16                       -      -            
+     0.05%  [k] mas_walk                        -      -            
+     0.05%  [k] pfn_pte                         -      -            
+     0.05%  [k] pte_offset_map_rw_nolock        -      -            
+     0.05%  [k] zap_present_ptes.constprop.0    -      -            
+#
+# (Cannot load tips.txt file, please install perf!)
+#
